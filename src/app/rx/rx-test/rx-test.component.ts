@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Observable, catchError, combineLatest, concatMap, debounceTime, delay, exhaustMap, forkJoin, from, fromEvent, map, merge, mergeMap, of, switchMap, tap, throwError, withLatestFrom } from 'rxjs';
+import { AppStateService, User } from 'src/app/app-state.service';
+import { LogLevel, debug } from 'src/app/operators';
 
 @Component({
   selector: 'app-rx-test',
@@ -27,9 +29,16 @@ export class RxTestComponent {
   fromObs$ = from([1,2,3,4,5])
   fromEventObs$!: Observable<any>;
   clickObs$!: Observable<any>;
+  users$!: Observable<User[]>;
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private appstate: AppStateService ) {
+    this.users$ = appstate.users$;
+  }
+
+  loadUsers() {
+    this.appstate.loadUsers
+  }
   ngOnInit() {
     this.obs$.pipe(
       catchError(err => {
@@ -70,7 +79,10 @@ export class RxTestComponent {
     //   ).subscribe(val => console.log(val))
 
     // merge(this.clickObs$, this.fromEventObs$).subscribe(console.log);
-    combineLatest([this.clickObs$, this.fromEventObs$]).subscribe(console.log)
+    combineLatest([this.clickObs$, this.fromEventObs$])
+    .pipe(
+      debug(LogLevel.ERROR)
+      ).subscribe(console.log)
     // forkJoin([this.http.get<any>('http://localhost:3000/user').pipe(delay(2000)), this.http.get<any>('http://localhost:3000/user')]).subscribe(v => console.log(v))
   }
 }

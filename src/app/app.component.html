@@ -2,6 +2,10 @@
   <a routerLink="/test">Test</a>
   <a routerLink="/rx">Rx</a>
 </nav>
+
+<div  *ngIf="pending$ | async " style="width: 100%; top: 0; left: 0;
+height: 100%; background: greenyellow; color: black; position: fixed; z-index: 1000">
+Loading....</div>
 <div>
   <router-outlet></router-outlet>
 </div>

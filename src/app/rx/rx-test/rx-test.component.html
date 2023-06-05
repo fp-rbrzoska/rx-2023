@@ -1,2 +1,3 @@
 My value<input #myInput>
-<div><button #myButton>Click</button></div>
+<div><button #myButton (click)="loadUsers()">Click</button></div>
+<pre> {{ users$ | async | json }}</pre>
