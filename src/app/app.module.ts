@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
 import {LayoutModule} from '@angular/cdk/layout';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent
@@ -23,7 +24,9 @@ import {LayoutModule} from '@angular/cdk/layout';
     SharedModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

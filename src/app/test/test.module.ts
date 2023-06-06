@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { TestRoutingModule } from './test-routing.module';
 import { TestComponent } from './test/test.component';
+import { SharedModule } from '../shared/shared.module';
+import { TestDialogComponent } from './test-dialog/test-dialog.component';
 
 
 @NgModule({
   declarations: [
-    TestComponent
+    TestComponent,
+    TestDialogComponent
   ],
   imports: [
     CommonModule,
-    TestRoutingModule
+    TestRoutingModule,
+    SharedModule
   ]
 })
 export class TestModule { }
