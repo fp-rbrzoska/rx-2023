@@ -22,6 +22,6 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     SharedModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }]
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'gb-GB' }]
 })
 export class TestModule { }

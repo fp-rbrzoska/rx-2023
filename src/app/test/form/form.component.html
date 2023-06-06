@@ -12,8 +12,8 @@
            placeholder="Select country"
            matInput
            formControlName="country"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+           [matAutocomplete]="countryAutoComplete">
+    <mat-autocomplete autoActiveFirstOption #countryAutoComplete="matAutocomplete">
       <mat-option *ngFor="let option of filteredCountries | async" [value]="option">
         {{option}}
       </mat-option>
