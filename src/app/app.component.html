@@ -2,14 +2,16 @@
   <button mat-icon-button color="white" (click)="sidenavOpen = !sidenavOpen">
     <mat-icon>menu</mat-icon>
   </button>
-  <button routerLink="/test" mat-button color="white">Test</button>
-  <button routerLink="/rx" mat-button color="white">Rx</button>
+  <ng-container *ngIf="!isSmall">
+    <button routerLink="/test" mat-button color="white">Test</button>
+    <button routerLink="/rx" mat-button color="white">Rx</button>
+  </ng-container>
 </mat-toolbar>
 
 <div  *ngIf="pending$ | async " style="width: 100%; top: 0; left: 0;
 height: 100%; background: greenyellow; color: black; position: fixed; z-index: 1000">
 Loading....</div>
-
+{{isSmall}}
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="sidenavOpen" class="example-sidenav">
     <mat-nav-list>

@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from './shared/shared.module';
-
+import {LayoutModule} from '@angular/cdk/layout';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    SharedModule
+    SharedModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
