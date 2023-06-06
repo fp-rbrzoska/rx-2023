@@ -1,5 +1,12 @@
-<button mat-button color="primary" (click)="openDialog()">Open</button>
+<mat-card class="mt-3 m-2">
+  <button mat-button color="primary" (click)="openDialog()">Open</button>
 <button mat-button color="warn" (click)="openDialogFromTemplate()">Open</button>
+<ng-container *ngTemplateOutlet="dialogTemplate"></ng-container>
+
+</mat-card>
+
+
+
 <ng-template #dialogTemplate>
   Srutututu
 </ng-template>
