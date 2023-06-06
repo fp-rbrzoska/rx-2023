@@ -1,3 +1,42 @@
 <mat-card class="m-2">
-  <form></form>
+  <form [formGroup]="myForm">
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name"
+    formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input type="text"
+           placeholder="Select country"
+           matInput
+           formControlName="country"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredCountries | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose city</mat-label>
+    <mat-select formControlName="city">
+      <mat-option *ngFor="let city of cities" [value]="city">
+        {{city}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="birthDate">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  </form>
+
+  <pre>{{ myForm.value | json }}</pre>
+
 </mat-card>
