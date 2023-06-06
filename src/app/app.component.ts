@@ -11,13 +11,14 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class AppComponent implements AfterViewInit {
   @ViewChild('sidenav') sidenav!: MatSidenav
   title = 'rx-proj';
+  sidenavOpen = true;
   pending$!: Observable<boolean>;
   constructor(private _appStateService: AppStateService ) {
     this.pending$ = _appStateService.pending$;
   }
 
   ngAfterViewInit(): void {
-      setTimeout(() => this.sidenav.close());
+      // setTimeout(() => this.sidenav.close());
 
   }
 }
